@@ -87,11 +87,11 @@ public class Character : MonoBehaviour
         Vector3 direction = mousePosition - transform.position;
 
 
-        if (direction.x < 0) // Mouse is to the left of the object
+        if (direction.x < 0)
         {
             sr.flipX = true;
         }
-        else if (direction.x > 0) // Mouse is to the right of the object
+        else if (direction.x > 0)
         {
             sr.flipX = false;
         }
