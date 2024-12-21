@@ -35,6 +35,7 @@ public class Character : MonoBehaviour
         sr = GetComponent<SpriteRenderer>();
     }
 
+    //---------------Getters and Setters---------------\\
     public void SetHealth(int health)
     {
         this._health = health; 
@@ -63,6 +64,8 @@ public class Character : MonoBehaviour
     {
         this.moveForce = moveforce;
     }
+
+    //--------------------Methods--------------------\\
     public void Call()
     {
         PlayerMoveKeyboard();
@@ -79,13 +82,18 @@ public class Character : MonoBehaviour
     }
     private void Face()
     {
-        if (movementx > 0)
-        {
-            sr.flipX = false;
-        }
-        else if (movementx < 0)
+        Vector3 mousePosition = Input.mousePosition;
+        mousePosition = Camera.main.ScreenToWorldPoint(mousePosition);
+        Vector3 direction = mousePosition - transform.position;
+
+
+        if (direction.x < 0) // Mouse is to the left of the object
         {
             sr.flipX = true;
+        }
+        else if (direction.x > 0) // Mouse is to the right of the object
+        {
+            sr.flipX = false;
         }
     }
 }
