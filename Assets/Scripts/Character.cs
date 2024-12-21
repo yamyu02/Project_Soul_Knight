@@ -8,6 +8,7 @@ public class Character : MonoBehaviour
     private int _armor;
     private int _mana;
     private int _coins;
+    private bool _iFrame;
 
 
     [SerializeField]
@@ -26,6 +27,7 @@ public class Character : MonoBehaviour
         _armor = armor;
         _mana = 200;
         _coins = 0;
+        _iFrame = false;
     }
     private void Awake()
     {
@@ -50,6 +52,11 @@ public class Character : MonoBehaviour
     public int GetArmor()
     {
         return this._armor;
+    }
+
+    public void SetiFrame(bool iframe)
+    {
+        this._iFrame = iframe;
     }
 
     public void SetMoveForce(int moveforce)

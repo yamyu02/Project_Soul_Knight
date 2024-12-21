@@ -10106,7 +10106,7 @@ GameObject:
   - component: {fileID: 1423424745}
   - component: {fileID: 1423424747}
   m_Layer: 0
-  m_Name: Rogue_Idle_0
+  m_Name: Rogue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

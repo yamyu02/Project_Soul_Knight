@@ -10,7 +10,6 @@ public class Rogue : Character
     public Animator Ani;
 
     private int _charge;
-    private bool _iFrame = false;
     public Rogue(int Health, int Armor) : base(Health, Armor)
     {
 
@@ -41,7 +40,7 @@ public class Rogue : Character
         {
             if (this._charge > 0)
             {
-                this._iFrame = true;
+                SetiFrame(true);
                 Debug.Log("Rolling");
                 SetMoveForce(15);
                 Ani.SetBool("Roll", true);
@@ -62,7 +61,7 @@ public class Rogue : Character
     {
         yield return new WaitForSeconds(delay);
         SetMoveForce(6);
-        this._iFrame = false;
+        SetiFrame(false);
     }
 
     private bool _regenerating = false;
