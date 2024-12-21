@@ -16,7 +16,7 @@ public class Character : MonoBehaviour
     private float movementy;
 
     [SerializeField]
-    private Animator ani;
+
     private SpriteRenderer sr;
 
 
@@ -29,7 +29,7 @@ public class Character : MonoBehaviour
     }
     private void Awake()
     {
-        ani = GetComponent<Animator>();
+        
         sr = GetComponent<SpriteRenderer>();
     }
 
@@ -50,6 +50,11 @@ public class Character : MonoBehaviour
     public int GetArmor()
     {
         return this._armor;
+    }
+
+    public void SetMoveForce(int moveforce)
+    {
+        this.moveForce = moveforce;
     }
     public void Call()
     {
