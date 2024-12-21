@@ -1,3 +1,4 @@
+using JetBrains.Rider.Unity.Editor;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -19,10 +20,7 @@ public class Aim : MonoBehaviour
 
     public string Type;
     public WeaponTypeManager CurrentType;
-
-
-
-    
+ 
     void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -79,14 +77,33 @@ public class Aim : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-
             if (this.Type == CurrentType.CurrentType)
             {
                 this._throwing = true;
+
                 Vector3 mousePosition = Input.mousePosition;
                 mousePosition = Camera.main.ScreenToWorldPoint(mousePosition);
-                Vector3 direction = mousePosition - transform.position;
+                Vector3 direction = (mousePosition - transform.position).normalized;
+
+                // Help From Ai
+                GameObject dagger = Instantiate(_daggerPrefab, transform.position, Quaternion.identity);
+                SpriteRenderer daggerSpriteRenderer = dagger.GetComponent<SpriteRenderer>();
+
+                if (direction.x < 0)
+                {
+                    daggerSpriteRenderer.flipY= true;
+                }
                 float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+                dagger.transform.rotation = Quaternion.Euler(0f, 0f, angle); // Normal rotation
+
+                Rigidbody2D rb = dagger.GetComponent<Rigidbody2D>();
+                if (rb != null)
+                {
+                    float daggerSpeed = 100f; // Adjust the speed as needed
+                    rb.velocity = direction * daggerSpeed;
+                }
+                Destroy(dagger, 0.5f);
+
 
                 if (direction.x < 0)
                 {
@@ -98,7 +115,6 @@ public class Aim : MonoBehaviour
                 }
 
                 StartCoroutine(ResetPosition(0.1f));
-             
             }
         }
     }

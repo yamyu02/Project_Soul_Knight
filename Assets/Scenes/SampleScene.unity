@@ -3696,6 +3696,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 204487846}
+  _daggerPrefab: {fileID: 8971062644455841751, guid: ae81851cf7c1b374e8c0136945ff4a22, type: 3}
   OffSetX: 0.5
   OffSetY: 0.7
   Type: Jack
@@ -22775,6 +22776,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 1343235874}
+  _daggerPrefab: {fileID: 1800005790847685607, guid: 38a5bc75354a26f439f488c25821ba8f, type: 3}
   OffSetX: 0
   OffSetY: 0.7
   Type: Mary
@@ -24502,7 +24504,7 @@ GameObject:
   - component: {fileID: 1423424746}
   - component: {fileID: 1423424745}
   - component: {fileID: 1423424747}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Rogue
   m_TagString: Player
   m_Icon: {fileID: 0}
