@@ -56,7 +56,6 @@ public class Rogue : Character
             
         }
     }
-    //Help from AI
     private IEnumerator ResetMoveForceAfterTime(float delay)
     {
         yield return new WaitForSeconds(delay);
