@@ -19,7 +19,7 @@ public class Rogue : Character
     {
         SetHealth(6);
         SetArmor(4);
-        this._charge = 3;
+        this._charge = 1;
 }
     void Update()
     {
@@ -67,10 +67,10 @@ public class Rogue : Character
     private bool _regenerating = false;
     private void CheckCharge()
     {
-        if (this._charge <3 && this._regenerating == false)
+        if (this._charge <1 && this._regenerating == false)
         {
             Debug.Log("Regenerating!!");
-            StartCoroutine(RegenrateCharge(3f));
+            StartCoroutine(RegenrateCharge(1.5f));
             this._regenerating = true;
         }
     }
