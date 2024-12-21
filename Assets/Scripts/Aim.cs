@@ -6,6 +6,8 @@ public class Aim : MonoBehaviour
 {
     [SerializeField]
     private SpriteRenderer spriteRenderer;
+    [SerializeField]
+    private GameObject _daggerPrefab; 
 
     private Transform player;
     public float OffSetX;
@@ -16,7 +18,8 @@ public class Aim : MonoBehaviour
     private bool _throwing = false;
 
     public string Type;
-    public WeaponTypeManager CurrentType; 
+    public WeaponTypeManager CurrentType;
+
 
 
     
@@ -87,15 +90,15 @@ public class Aim : MonoBehaviour
 
                 if (direction.x < 0)
                 {
-                    StartCoroutine(SmoothRotate(angle, angle + 50, 0.1f));
+                    StartCoroutine(SmoothRotate(angle, angle + 75, 0.1f));
                 }
                 else if (direction.x > 0)
                 {
-                    StartCoroutine(SmoothRotate(angle, angle - 50, 0.1f));
+                    StartCoroutine(SmoothRotate(angle, angle - 75, 0.1f));
                 }
 
-                
                 StartCoroutine(ResetPosition(0.1f));
+             
             }
         }
     }
