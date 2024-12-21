@@ -40,7 +40,6 @@ public class Aim : MonoBehaviour
     }
 
     //Help from AI
-
     private void Rotate()
     {
         if (this._throwing == false)
@@ -85,7 +84,7 @@ public class Aim : MonoBehaviour
                 mousePosition = Camera.main.ScreenToWorldPoint(mousePosition);
                 Vector3 direction = (mousePosition - transform.position).normalized;
 
-                // Help From Ai
+                // Help From Ai--------------------------------------------------------------------------\\
                 GameObject dagger = Instantiate(_daggerPrefab, transform.position, Quaternion.identity);
                 SpriteRenderer daggerSpriteRenderer = dagger.GetComponent<SpriteRenderer>();
 
@@ -102,8 +101,8 @@ public class Aim : MonoBehaviour
                     float daggerSpeed = 100f; // Adjust the speed as needed
                     rb.velocity = direction * daggerSpeed;
                 }
-                Destroy(dagger, 0.5f);
-
+                Destroy(dagger, 2f);
+                // -----------------------------------------------------------------------------------------\\
 
                 if (direction.x < 0)
                 {
@@ -118,7 +117,6 @@ public class Aim : MonoBehaviour
             }
         }
     }
-
 
     //Help From Ai
     private IEnumerator SmoothRotate(float startAngle, float targetAngle, float duration)

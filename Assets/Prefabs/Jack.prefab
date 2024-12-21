@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6411432804354764613}
   - component: {fileID: 6038512468234971674}
   - component: {fileID: -2445327358633083901}
+  - component: {fileID: 681992575192377382}
   m_Layer: 3
   m_Name: Jack
   m_TagString: Untagged
@@ -158,3 +159,15 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
+--- !u!114 &681992575192377382
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8971062644455841751}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be1c3b8930f38ed40a6fb030312faf13, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
