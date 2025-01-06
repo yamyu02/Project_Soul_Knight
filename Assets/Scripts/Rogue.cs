@@ -10,17 +10,23 @@ public class Rogue : Character
     public Animator Ani;
 
     private int _charge;
-    public Rogue(int Health, int Armor) : base(Health, Armor)
+
+    public Rogue()
     {
 
     }
 
     void Start()
     {
+        this._charge = 1;
+        SetMana(200);
         SetHealth(6);
         SetArmor(4);
-        this._charge = 1;
-}
+        SetiFrame(false);
+
+        Debug.Log($"Health is {GetHealth()}");
+        Debug.Log($"Armor is {GetArmor()}");
+    }
     void Update()
     {
         Call();

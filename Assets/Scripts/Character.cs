@@ -21,13 +21,9 @@ public class Character : MonoBehaviour
     private SpriteRenderer sr;
 
 
-    public Character(int health, int armor)
+    public Character()
     {
-        _health = health;
-        _armor = armor;
-        _mana = 200;
-        _coins = 0;
-        _iFrame = false;
+        
     }
     private void Awake()
     {
@@ -45,14 +41,10 @@ public class Character : MonoBehaviour
     {
         this._armor = armor;
     }
-    public int GetHealth()
-    {
-        return this._health;
-    }
 
-    public int GetArmor()
+    public void SetMana(int mana)
     {
-        return this._armor;
+        this._mana = mana;
     }
 
     public void SetiFrame(bool iframe)
@@ -63,6 +55,26 @@ public class Character : MonoBehaviour
     public void SetMoveForce(int moveforce)
     {
         this.moveForce = moveforce;
+    }
+
+    public int GetHealth()
+    {
+        return this._health;
+    }
+
+    public int GetArmor()
+    {
+        return this._armor;
+    }
+
+    public int GetMana()
+    {
+        return this._mana;
+    }
+
+    public bool GetiFrame()
+    {
+        return this._iFrame;
     }
 
     //--------------------Methods--------------------\\

@@ -10,6 +10,8 @@ public class Aim : MonoBehaviour
     [SerializeField]
     private GameObject _daggerPrefab; 
 
+    public Rogue character;
+
     private Transform player;
     public float OffSetX;
     public float OffSetY;
@@ -17,6 +19,8 @@ public class Aim : MonoBehaviour
     private Vector3 tempPos;
     private float movementx;
     private bool _throwing = false;
+
+    private int _manaCost = 2;
 
     public string Type;
     public WeaponTypeManager CurrentType;
@@ -26,8 +30,6 @@ public class Aim : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
         player = GameObject.FindWithTag("Player").transform;
     }
-
-    // Update is called once per frame
     void Update()
     {
         Throw ();
@@ -76,8 +78,9 @@ public class Aim : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            if (this.Type == CurrentType.CurrentType)
+            if (this.Type == CurrentType.CurrentType && character.GetMana() > 0)
             {
+                ManaUse();
                 this._throwing = true;
 
                 Vector3 mousePosition = Input.mousePosition;
@@ -150,4 +153,10 @@ public class Aim : MonoBehaviour
         
     }
 
+    private void ManaUse()
+    {
+        int CalcMana = character.GetMana() - this._manaCost;
+        character.SetMana(CalcMana);
+        Debug.Log(character.GetMana());
+    }
 }
