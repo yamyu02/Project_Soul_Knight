@@ -6,6 +6,7 @@ public class BoarBehavior : MonoBehaviour
 {
     private Transform player;
     private Vector3 direction;
+    private Vector3 Current;
     [SerializeField]
     private Rigidbody2D rb;
     void Start()
@@ -21,8 +22,9 @@ public class BoarBehavior : MonoBehaviour
     {
         yield return new WaitForSeconds(delay);
         direction = player.position - transform.position;
+        Current = rb.velocity;
         StartCoroutine(ChargeReset(2f));
-        rb.velocity = direction * 2;
+        rb.velocity = direction - Current;
         StartCoroutine(GetPlayerPos(3f)); 
     }
 
