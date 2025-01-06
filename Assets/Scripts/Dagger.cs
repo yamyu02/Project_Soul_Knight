@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Aim : MonoBehaviour
+public class Dagger : MonoBehaviour
 {
     [SerializeField]
     private SpriteRenderer spriteRenderer;
