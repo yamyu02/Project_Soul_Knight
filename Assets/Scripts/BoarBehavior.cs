@@ -12,13 +12,15 @@ public class BoarBehavior : MonoBehaviour
     private Rigidbody2D rb;
     [SerializeField]
     private SpriteRenderer sr;
+
+    public float startTime;
     void Start()
     {
         player = GameObject.FindWithTag("Player").transform;
         rb = GetComponent<Rigidbody2D>();
         sr = GetComponent<SpriteRenderer>();
 
-        StartCoroutine(GetPlayerPos(1f));
+        StartCoroutine(GetPlayerPos(startTime));
 
     }
 

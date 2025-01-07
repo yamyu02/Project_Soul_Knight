@@ -5887,6 +5887,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 264520590}
   sr: {fileID: 264520592}
+  startTime: 2
 --- !u!61 &264520589
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -32157,6 +32158,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 1402457423}
   sr: {fileID: 1402457419}
+  startTime: 1
 --- !u!61 &1402457422
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -36336,6 +36338,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 1559265402}
   sr: {fileID: 1559265404}
+  startTime: 3
 --- !u!61 &1559265401
 BoxCollider2D:
   m_ObjectHideFlags: 0
