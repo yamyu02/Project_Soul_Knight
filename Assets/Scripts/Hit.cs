@@ -18,6 +18,7 @@ public class Hit : MonoBehaviour
         {
             Debug.Log("Enemy Hit");
             Destroy(gameObject);
+
         }
 
     }

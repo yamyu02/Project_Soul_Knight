@@ -108,4 +108,20 @@ public class Character : MonoBehaviour
             sr.flipX = false;
         }
     }
+
+    public void TakeDamage()
+    {
+        if (this._iFrame == false)
+        {
+            this._health -= 1;
+            this._iFrame = true;
+            StartCoroutine(ResetIframe(0.5f));
+        }
+    }
+
+    private IEnumerator ResetIframe(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        this._iFrame = false;
+    }
 }
