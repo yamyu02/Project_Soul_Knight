@@ -114,8 +114,13 @@ public class Character : MonoBehaviour
         if (this._iFrame == false)
         {
             this._health -= 1;
+            Debug.Log($"Health is {this._health}");
             this._iFrame = true;
             StartCoroutine(ResetIframe(0.5f));
+        }
+        else
+        {
+            Debug.Log("Character in IFrame");
         }
     }
 

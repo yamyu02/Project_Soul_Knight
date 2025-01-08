@@ -92,6 +92,7 @@ public class Rogue : Character
         if (other.gameObject.CompareTag("Attack"))
         {
             Debug.Log("Took hit");
+            TakeDamage(); 
         }
     }
 
