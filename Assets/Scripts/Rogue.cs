@@ -87,12 +87,11 @@ public class Rogue : Character
         this._regenerating = false;
     }
 
-    private void OnTriggerEnter(Collider collision)
+    private void OnTriggerEnter(Collider other)
     {
-        if (collision.gameObject.tag == "Enemy")
+        if (other.gameObject.CompareTag("Attack"))
         {
-            Debug.Log("Took Hit");
-            TakeDamage(); 
+            Debug.Log("Took hit");
         }
     }
 

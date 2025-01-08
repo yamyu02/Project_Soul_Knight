@@ -54,4 +54,5 @@ public class BoarBehavior : MonoBehaviour
             sr.flipX = false;
         }
     }
+
 }
