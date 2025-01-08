@@ -6,7 +6,6 @@ public class Follow : MonoBehaviour
 {
     private Transform player;
     [SerializeField]
-    private SpriteRenderer sr;
     private Vector3 tempPos;
 
 

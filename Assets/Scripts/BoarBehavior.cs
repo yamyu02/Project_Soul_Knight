@@ -16,10 +16,11 @@ public class BoarBehavior : MonoBehaviour
     public float startTime;
     void Start()
     {
+
         player = GameObject.FindWithTag("Player").transform;
         rb = GetComponent<Rigidbody2D>();
         sr = GetComponent<SpriteRenderer>();
-
+        Face();
         StartCoroutine(GetPlayerPos(startTime));
 
     }
