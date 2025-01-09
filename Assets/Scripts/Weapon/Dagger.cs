@@ -38,6 +38,10 @@ public class Dagger : MonoBehaviour
         tempPos.x = player.position.x + OffSetX * _direction;
         tempPos.y = player.position.y - OffSetY;
         transform.position = tempPos;
+        if (character.GetHealth() < 1)
+        {
+            Destroy(gameObject);
+        }
 
     }
 
