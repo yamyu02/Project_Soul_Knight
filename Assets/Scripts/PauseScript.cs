@@ -6,11 +6,13 @@ using UnityEngine;
 public class PauseScript : MonoBehaviour
 {
     public GameObject PauseMenu;
+    public GameObject GameOverMenu;
     public Character character;
     // Start is called before the first frame update
     void Start()
     {
         PauseMenu.SetActive(false);
+        GameOverMenu.SetActive(false);
     }
 
     // Update is called once per frame
@@ -34,7 +36,8 @@ public class PauseScript : MonoBehaviour
         if (character.GetHealth() == 0)
         {
             Time.timeScale = 0;
-            Debug.Log("game over (no screen yet because it would make a merge conflict)");
+            GameOverMenu.SetActive(true);
+            Debug.Log("game over");
             character.SetHealth(character.GetHealth() - 1); // code to prevent the code from looping
         }
     }
