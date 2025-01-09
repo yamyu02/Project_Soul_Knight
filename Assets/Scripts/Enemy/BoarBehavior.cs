@@ -8,6 +8,7 @@ public class BoarBehavior : MonoBehaviour
     private Vector3 direction;
     private Vector3 Current;
     private Vector3 BoarPos;
+    private int _health = 5;
     [SerializeField]
     private Rigidbody2D rb;
     [SerializeField]
@@ -53,6 +54,18 @@ public class BoarBehavior : MonoBehaviour
         if (BoarPos.x < player.position.x)
         {
             sr.flipX = false;
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Weapon"))
+        {
+            this._health -= 1;
+            if (this._health < 1)
+            {
+                Destroy(gameObject);
+            }
         }
     }
 

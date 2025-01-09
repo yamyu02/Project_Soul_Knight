@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 681992575192377382}
   m_Layer: 3
   m_Name: Jack
-  m_TagString: Untagged
+  m_TagString: Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
