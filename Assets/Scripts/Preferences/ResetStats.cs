@@ -15,12 +15,6 @@ public class ResetStats : MonoBehaviour
         button.onClick.AddListener(TaskOnClick);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     void TaskOnClick()
     {
         if (_clickCounter > 0)

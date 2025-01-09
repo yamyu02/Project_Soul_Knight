@@ -21,14 +21,9 @@ public class SceneChangeButton : MonoBehaviour
         ChangeScene();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void ChangeScene()
     {
+        Time.timeScale = 1;
         SceneManager.LoadScene(sceneName);
     }
 }
