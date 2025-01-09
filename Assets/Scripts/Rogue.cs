@@ -21,7 +21,9 @@ public class Rogue : Character
         this._charge = 1;
         SetMana(200);
         SetHealth(6);
+        SetMaxHealth(6);
         SetArmor(4);
+        SetMaxArmor(4);
         SetiFrame(false);
 
         Debug.Log($"Health is {GetHealth()}");
@@ -29,9 +31,13 @@ public class Rogue : Character
     }
     void Update()
     {
-        Call();
-        Roll(); 
-        CheckCharge();
+        if (GetHealth() > 0)
+        {
+            Call();
+            Roll();
+            CheckCharge();
+        }
+        
     }
 
     private void Awake()
@@ -92,7 +98,8 @@ public class Rogue : Character
         if (other.gameObject.CompareTag("Attack"))
         {
             Debug.Log("Took hit");
-            TakeDamage(); 
+            TakeDamage();
+            CheckArmor();
         }
     }
 

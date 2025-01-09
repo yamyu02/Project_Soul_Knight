@@ -5,11 +5,13 @@ using UnityEngine;
 public class Character : MonoBehaviour
 {
     private int _health;
+    private int _maxHealth;
     private int _armor;
+    private int _maxArmor;
     private int _mana;
     private int _coins;
     private bool _iFrame;
-
+    
 
     [SerializeField]
     private float moveForce = 10f;
@@ -26,8 +28,7 @@ public class Character : MonoBehaviour
         
     }
     private void Awake()
-    {
-        
+    {   
         sr = GetComponent<SpriteRenderer>();
     }
 
@@ -37,9 +38,19 @@ public class Character : MonoBehaviour
         this._health = health; 
     }
 
+    public void SetMaxHealth(int maxHealth)
+    {
+        this._maxHealth = maxHealth;
+    }
+
     public void SetArmor(int armor)
     {
         this._armor = armor;
+    }
+
+    public void SetMaxArmor(int maxArmor)
+    {
+        this._maxArmor = maxArmor;
     }
 
     public void SetMana(int mana)
@@ -62,9 +73,19 @@ public class Character : MonoBehaviour
         return this._health;
     }
 
+    public int GetMaxHealth()
+    {
+        return this._maxHealth;
+    }
+
     public int GetArmor()
     {
         return this._armor;
+    }
+
+    public int GetMaxArmor()
+    {
+        return this._maxArmor;
     }
 
     public int GetMana()
@@ -113,8 +134,21 @@ public class Character : MonoBehaviour
     {
         if (this._iFrame == false)
         {
-            this._health -= 1;
-            Debug.Log($"Health is {this._health}");
+            if (this._armor > 0)
+            {
+                this._armor -= 1;
+                Debug.Log($"Armor is {this._armor}");
+            }
+
+            else
+            {
+                this._health -= 1;
+                Debug.Log($"Health is {this._health}");
+                if (this._health < 1)
+                {
+                    Debug.Log("player is dead");
+                }
+            }
             this._iFrame = true;
             StartCoroutine(ResetIframe(0.5f));
         }
@@ -128,5 +162,29 @@ public class Character : MonoBehaviour
     {
         yield return new WaitForSeconds(delay);
         this._iFrame = false;
+    }
+
+    private bool _armorRegen = false;
+    public void CheckArmor()
+    {
+        if (this._armor < this._maxArmor && this._armorRegen == false)
+        {
+            Debug.Log("Armor Regenerating");
+            this._armorRegen = true;
+            StartCoroutine(RegenerateArmor(3f));
+        }
+        else
+        {
+            Debug.Log("Armor is full or is regnerating");
+        }
+    }
+
+    private IEnumerator RegenerateArmor(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        this._armor += 1;
+        this._armorRegen = false;
+        Debug.Log($"Armor Regenerated, Armor is {this._armor}");
+        CheckArmor();
     }
 }
