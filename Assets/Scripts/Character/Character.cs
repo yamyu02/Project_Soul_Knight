@@ -130,6 +130,16 @@ public class Character : MonoBehaviour
         }
     }
 
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("Attack"))
+        {
+            Debug.Log("Took hit");
+            TakeDamage();
+            CheckArmor();
+        }
+    }
+
     public void TakeDamage()
     {
         if (this._iFrame == false)

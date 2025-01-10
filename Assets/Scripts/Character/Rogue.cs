@@ -93,14 +93,4 @@ public class Rogue : Character
         this._regenerating = false;
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.gameObject.CompareTag("Attack"))
-        {
-            Debug.Log("Took hit");
-            TakeDamage();
-            CheckArmor();
-        }
-    }
-
 }
