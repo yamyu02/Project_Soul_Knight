@@ -20,6 +20,20 @@ public class Hit : MonoBehaviour
             Destroy(gameObject);
 
         }
+        
+        if (collision.gameObject.CompareTag("Box"))
+        {
+            StartCoroutine(DestroyDelay(0.1f)); 
+        }
+
 
     }
+
+    private IEnumerator DestroyDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        Destroy(gameObject);
+    }
+
+
 }
