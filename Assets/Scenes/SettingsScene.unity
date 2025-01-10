@@ -572,7 +572,7 @@ MonoBehaviour:
   EasyButton: {fileID: 1446128544}
   NormalButton: {fileID: 256367271}
   HardButton: {fileID: 387463729}
-  MusicSlider: {fileID: 0}
+  MusicSlider: {fileID: 1708484294}
   SoundSlider: {fileID: 0}
 --- !u!4 &771209142
 Transform:
