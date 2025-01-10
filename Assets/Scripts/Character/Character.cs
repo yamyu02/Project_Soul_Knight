@@ -179,7 +179,6 @@ public class Character : MonoBehaviour
     {
         if (this._armor < this._maxArmor && this._armorRegen == false)
         {
-            Debug.Log("Armor Regenerating");
             this._armorRegen = true;
             StartCoroutine(RegenerateArmor(3f));
         }
