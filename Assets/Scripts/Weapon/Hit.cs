@@ -23,6 +23,9 @@ public class Hit : MonoBehaviour
         
         if (collision.gameObject.CompareTag("Box"))
         {
+            Rigidbody2D rb = GetComponent<Rigidbody2D>();
+            rb.velocity = Vector2.zero;
+
             StartCoroutine(DestroyDelay(0.1f)); 
         }
 
