@@ -26,15 +26,15 @@ public class Box : MonoBehaviour
     {
         this._hpDropPercent = percentage;
     }
-    public void SetManaDropPercent(int percentage)
+    public void SetManaDrop(int percentage)
     {
         this._manaDropPercent = percentage;
     }
-    public void SetCoinDropPercent(int percentage)
+    public void SetCoinDrop(int percentage)
     {
         this._coinDropPercent = percentage;
     }
-    public void SetNothingDropPercent(int percentage)
+    public void SetNothingDrop(int percentage)
     {
         this._nothingDropPercent = percentage;
     }
@@ -62,6 +62,12 @@ public class Box : MonoBehaviour
 
     private void Break()
     {
+        RollDrop();
         Destroy(gameObject);
+    }
+
+    private void RollDrop()
+    {
+        
     }
 }
