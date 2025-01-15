@@ -2,12 +2,15 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.UIElements;
 
 public class PauseScript : MonoBehaviour
 {
     public GameObject PauseMenu;
     public GameObject GameOverMenu;
     public Character character;
+    public UnityEngine.UI.Button ResumeButton;
     private bool _gameEnded = false; //this isn't encapsulation or anything it's so the game over screen works as intended
 
     // Start is called before the first frame update
@@ -15,6 +18,7 @@ public class PauseScript : MonoBehaviour
     {
         PauseMenu.SetActive(false);
         GameOverMenu.SetActive(false);
+        ResumeButton.onClick.AddListener(TaskOnClick);
     }
 
     // Update is called once per frame
@@ -43,5 +47,12 @@ public class PauseScript : MonoBehaviour
             Debug.Log("game over");
             character.SetHealth(-1); // code to prevent the code from looping
         }
+    }
+    
+    void TaskOnClick()
+    {
+        Time.timeScale = 1;
+        PauseMenu.SetActive(false);
+        Debug.Log("game unpaused");
     }
 }
