@@ -26,24 +26,33 @@ public class WizardBehavior : MonoBehaviour // not finished yet (most of this is
 
     }
 
+    void Update()
+    {
+        if (Vector3.Distance(player.position, transform.position) > 7.2)
+        {
+            rb.velocity = direction - Current;
+        }
+        else if (Vector3.Distance(player.position, transform.position) < 6.8)
+        {
+            rb.velocity = -(direction - Current);
+        }
+    }
+
     private IEnumerator GetPlayerPos(float delay)
     {
         yield return new WaitForSeconds(delay);
         direction = player.position - transform.position;
-        Current = rb.velocity;
+        //Current = rb.velocity;
+        Current = rb.velocity * 0;
         StartCoroutine(ChargeReset(2f));
-        if (Vector3.Distance(player.position, transform.position) > 3)
-        {
-            // Debug.Log($"distance: {Vector3.Distance(player.position, transform.position)}");
-        }
-        rb.velocity = direction - Current;
+        //rb.velocity = direction - Current;
         StartCoroutine(GetPlayerPos(3f)); 
     }
 
     private IEnumerator ChargeReset(float delay)
     {
         yield return new WaitForSeconds(delay);
-        rb.velocity = direction * 0;
+        //rb.velocity = direction * 0;
         Face();
     }
     
