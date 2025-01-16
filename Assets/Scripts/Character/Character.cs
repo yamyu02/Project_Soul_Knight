@@ -144,6 +144,7 @@ public class Character : MonoBehaviour
     {
         if (this._iFrame == false)
         {
+            PlayerPrefs.SetInt("Damage", PlayerPrefs.GetInt("Damage", 0) + 1);
             if (this._armor > 0)
             {
                 this._armor -= 1;
@@ -156,6 +157,7 @@ public class Character : MonoBehaviour
                 Debug.Log($"Health is {this._health}");
                 if (this._health < 1)
                 {
+                    PlayerPrefs.SetInt("Losses", PlayerPrefs.GetInt("Losses", 0) + 1);
                     Debug.Log("player is dead");
                 }
             }

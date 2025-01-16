@@ -23,7 +23,11 @@ public class ResetStats : MonoBehaviour
         }
         else
         {
-            Debug.Log("Stats reset (this is a lie right now there are no stats to reset)");
+            Debug.Log("Stats reset");
+            PlayerPrefs.SetInt("Kills", 0);
+            PlayerPrefs.SetInt("Damage", 0);
+            PlayerPrefs.SetInt("Wins", 0);
+            PlayerPrefs.SetInt("Losses", 0);
             _clickCounter = 2;
         }
     }

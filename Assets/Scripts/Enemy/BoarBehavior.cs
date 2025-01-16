@@ -64,6 +64,7 @@ public class BoarBehavior : MonoBehaviour
             this._health -= 1;
             if (this._health < 1)
             {
+                PlayerPrefs.SetInt("Kills", PlayerPrefs.GetInt("Kills", 0) + 1);
                 Destroy(gameObject);
             }
         }
