@@ -1,65 +1,74 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics.Tracing;
+using Unity.Burst.Intrinsics;
 using UnityEngine;
 
 public class RaritySort : MonoBehaviour
 {
-    public Node _Start;
-    public Node _End;
-    public RaritySort()
-    {
+    public Node[] items = new Node[1];
+    public int pointer = 0;
+    public string[] RarityOrder = {"Common", "Uncommon", "Rare", "Epic", "Legendary"};
 
+    public void Add(Node node)
+    {
+        if (pointer > items.Length-1)
+        {
+            Node[] newList = new Node[items.Length + 1];
+            for (int i = 0; i < items.Length; i++)
+            {
+                newList[i] = items[i];
+            }
+
+            items = newList;
+        }
+        items[pointer] = node;
+        pointer++;
     }
-    RaritySort ItemList = new RaritySort();
-    RaritySort CommonList = new RaritySort();
-    RaritySort UncommonList = new RaritySort();
-    RaritySort RareList = new RaritySort();
-    RaritySort EpicList = new RaritySort();
-    RaritySort LegendaryList = new RaritySort();
-
-    public void AddByRarity(string name, int amount, string rarity)
+    public void SortRarity()
     {
-        Node Temp = new Node(name,amount,rarity);
-
-        if (rarity == "Common")
+        for (int i = 0; i < items.Length - 1; i++)
         {
-            CommonList.Add(Temp, CommonList);
-        }
-
-        if (rarity == "Uncommon")
-        {
-            UncommonList.Add(Temp, UncommonList);
-        }
-
-        if (rarity == "Rare")
-        {
-            RareList.Add(Temp, RareList);
-        }
-
-        if (rarity == "Epic")
-        {
-            EpicList.Add(Temp, EpicList);
-        }
-
-        if (rarity == "Legendary")
-        {
-            LegendaryList.Add(Temp, LegendaryList);
+            int min = i;
+            for (int j = i + 1; j < items.Length; j++)
+            {
+                if (RaritySearch(items[min].Rarity) > RaritySearch(items[j].Rarity))
+                {
+                    min = j;
+                }
+            }
+            Node n = items[i];
+            items[i] = items[min];
+            items[min] = n;
         }
     }
-
-    public void Add(Node node, RaritySort list)
+    public int RaritySearch(string itemRarity)
     {
-        if (list._Start == null)
+        for (int i = 0; i < RarityOrder.Length; i++)
         {
-            list._Start = node;
-            list._End = list._Start;
+            if (RarityOrder[i] == itemRarity)
+            {
+                return i;
+            }
         }
-        else
-        {
-            list._End = node;
-        }
+        return -1;
+    }
 
-        list._End = list._End.Next;
+    private void Start()
+    {
+        Add(new Node("hp", 1, "Rare"));
+        Add(new Node("Atk", 1, "Epic"));
+        Add(new Node("stone", 1, "Common"));
+        Add(new Node("stick", 1, "Common"));
+        SortRarity();
+
+        foreach (Node node in items)
+        {
+            Debug.Log(node.Name);
+        }
+        
+
     }
     void Update()
     {
