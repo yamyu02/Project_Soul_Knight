@@ -80,6 +80,12 @@ public class BoarBehavior : MonoBehaviour
             if (this._health < 1)
             {
                 PlayerPrefs.SetInt("Kills", PlayerPrefs.GetInt("Kills", 0) + 1);
+
+                character.SetMana(character.GetMana() + 20);
+                if (character.GetMana() > 200)
+                {
+                    character.SetMana(200);
+                }
                 Destroy(gameObject);
             }
         }
