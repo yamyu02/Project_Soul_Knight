@@ -12,6 +12,7 @@ TagManager:
   - HealthPotion
   - ManaPotion
   - Coins
+  - Room1
   layers:
   - Default
   - TransparentFX

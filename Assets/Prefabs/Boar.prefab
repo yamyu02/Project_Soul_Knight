@@ -196,7 +196,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 8357077686338465660}
   sr: {fileID: 4700752509666971468}
-  startTime: 1
+  character: {fileID: 0}
+  SpawnRoom: 
+  startTime: 2
 --- !u!1 &8630588562493420265
 GameObject:
   m_ObjectHideFlags: 0

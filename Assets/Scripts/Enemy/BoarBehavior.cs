@@ -1,5 +1,6 @@
     using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class BoarBehavior : MonoBehaviour
@@ -14,8 +15,22 @@ public class BoarBehavior : MonoBehaviour
     [SerializeField]
     private SpriteRenderer sr;
 
+    public Character character;
+    public string SpawnRoom;
+    private bool start = true;
+
     public float startTime;
-    void Start()
+
+
+    void Update()
+    {
+        if (SpawnRoom == character.CurrentRoom && start == true)
+        {
+            Call();
+            start = false;
+        }
+    }
+    private void Call()
     {
 
         player = GameObject.FindWithTag("Player").transform;

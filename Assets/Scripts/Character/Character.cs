@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.PlasticSCM.Editor.WebApi;
 using UnityEngine;
 
 public class Character : MonoBehaviour
@@ -11,6 +12,8 @@ public class Character : MonoBehaviour
     private int _mana;
     private int _coins;
     private bool _iFrame;
+
+    public string CurrentRoom;
     
 
     [SerializeField]
@@ -165,6 +168,11 @@ public class Character : MonoBehaviour
             this._coins += 2;
 
             Debug.Log($"Coins: {_coins}");
+        }
+
+        if (other.gameObject.CompareTag("Room1"))
+        {
+            this.CurrentRoom = "Room1";
         }
     }
 
