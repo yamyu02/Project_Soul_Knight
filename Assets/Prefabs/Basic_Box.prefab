@@ -143,3 +143,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ffd4d7884bd1c084fad2f750c041a1e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  HealthPotion: {fileID: 4132416828985268366, guid: 1c537c6bd5aa08e499c35a05dd09f262, type: 3}
+  ManaPotion: {fileID: 8647142429229012315, guid: 3adc3569a0452fa428900e9c0c07a86b, type: 3}
+  Coins: {fileID: 6276480994809462961, guid: a2cecb2e3907d804fac514407a4a08a2, type: 3}

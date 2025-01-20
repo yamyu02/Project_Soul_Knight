@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 0261a0c1b62c73a46bd687c0ee7a1059
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - HealthPotion: {fileID: 4132416828985268366, guid: 1c537c6bd5aa08e499c35a05dd09f262, type: 3}
+  - ManaPotion: {fileID: 8647142429229012315, guid: 3adc3569a0452fa428900e9c0c07a86b, type: 3}
+  - Coins: {fileID: 6276480994809462961, guid: a2cecb2e3907d804fac514407a4a08a2, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

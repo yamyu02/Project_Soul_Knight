@@ -138,9 +138,37 @@ public class Character : MonoBehaviour
             TakeDamage();
             CheckArmor();
         }
+        if (other.gameObject.CompareTag("HealthPotion"))
+        {
+            this._health += 2;
+            if (this._health > this._maxHealth)
+            {
+                this._health = this._maxHealth;
+            }
+
+            Debug.Log("Healed");
+        }
+
+        if (other.gameObject.CompareTag("ManaPotion"))
+        {
+            this._mana += 10;
+            if (this._mana > 200)
+            {
+                this._mana = 200;
+            }
+
+            Debug.Log("Mana Regen");
+        }
+
+        if (other.gameObject.CompareTag("Coins"))
+        {
+            this._coins += 2;
+
+            Debug.Log($"Coins: {_coins}");
+        }
     }
 
-    public void TakeDamage()
+            public void TakeDamage()
     {
         if (this._iFrame == false)
         {
