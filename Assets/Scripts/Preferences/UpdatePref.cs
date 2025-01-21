@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.UI;
 
 public class UpdatePref : MonoBehaviour
@@ -13,6 +14,7 @@ public class UpdatePref : MonoBehaviour
     // a tiny bit of the code for the sliders was from https://johnleonardfrench.music/the-right-way-to-make-a-volume-slider-in-unity-using-logarithmic-conversion/
     public Slider MusicSlider;
     public Slider SoundSlider;
+    public AudioMixer mixer;
 
     // Start is called before the first frame update
     void Start()
@@ -37,6 +39,7 @@ public class UpdatePref : MonoBehaviour
     {
         SetMusicSliderLevel(MusicSlider.value);
         SetSoundSliderLevel(SoundSlider.value);
+
         // Debug.Log(MusicSlider.value);
         // Debug.Log(SoundSlider.value);
     }
@@ -58,10 +61,13 @@ public class UpdatePref : MonoBehaviour
     public void SetMusicSliderLevel(float value)
     {
         PlayerPrefs.SetFloat("MusicVolume", value);
+        mixer.SetFloat("MusicExposed", Mathf.Log10(value) * 20);
     }
 
     public void SetSoundSliderLevel(float value)
     {
         PlayerPrefs.SetFloat("SoundVolume", value);
+        mixer.SetFloat("SoundExposed", Mathf.Log10(value) * 20);
+
     }
 }
