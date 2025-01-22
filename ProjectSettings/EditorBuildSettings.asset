@@ -26,4 +26,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/OLDSampleScene.unity
     guid: d07daa3ec16217b429ca8f86706ae034
+  - enabled: 1
+    path: Assets/Scenes/SampleScene 1.unity
+    guid: 294c539f7a65cfa4980670b2e722d038
   m_configObjects: {}
