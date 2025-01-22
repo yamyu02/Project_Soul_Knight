@@ -61,6 +61,11 @@ public class Character : MonoBehaviour
         this._mana = mana;
     }
 
+    public void SetCoin(int coin)
+    {
+        this._coins = coin;
+    }
+
     public void SetiFrame(bool iframe)
     {
         this._iFrame = iframe;
@@ -94,6 +99,11 @@ public class Character : MonoBehaviour
     public int GetMana()
     {
         return this._mana;
+    }
+
+    public int GetCoin()
+    {
+        return this._coins;
     }
 
     public bool GetiFrame()
@@ -218,7 +228,7 @@ public class Character : MonoBehaviour
         if (this._armor < this._maxArmor && this._armorRegen == false)
         {
             this._armorRegen = true;
-            StartCoroutine(RegenerateArmor(3f));
+            StartCoroutine(RegenerateArmor(5f));
         }
         else
         {

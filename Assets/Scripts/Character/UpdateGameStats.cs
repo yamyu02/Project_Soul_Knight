@@ -11,6 +11,7 @@ public class UpdateGameStats : MonoBehaviour
     public TMP_Text HealthText;
     public TMP_Text ArmorText;
     public TMP_Text ManaText;
+    public TMP_Text CoinText;
 
     // Start is called before the first frame update
     void Start()
@@ -24,6 +25,7 @@ public class UpdateGameStats : MonoBehaviour
         HealthText.text = rogue.GetHealth().ToString();
         ArmorText.text = rogue.GetArmor().ToString();
         ManaText.text = rogue.GetMana().ToString();
+        CoinText.text = rogue.GetCoin().ToString();
 
     }
 }

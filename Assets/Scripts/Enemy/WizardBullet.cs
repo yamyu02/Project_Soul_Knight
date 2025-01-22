@@ -23,12 +23,18 @@ public class WizardBullet : MonoBehaviour
         Sprite.transform.Rotate(Vector3.forward * -1);
     }
 
-    void OnCollisionEnter2D(Collision2D coll)
+    void OnTriggerEnter2D(Collider2D coll)
     {
         if (coll.gameObject.CompareTag("Wall"))
         {
             Debug.Log("wall collide");
-            Destroy(coll.gameObject);
+            Destroy(gameObject);
+        }
+
+        if (coll.gameObject.CompareTag("Player"))
+        {
+            Debug.Log("Player collide");
+            Destroy(gameObject);
         }
     }
 }

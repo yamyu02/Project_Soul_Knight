@@ -86,6 +86,7 @@ public class BoarBehavior : MonoBehaviour
                 {
                     character.SetMana(200);
                 }
+                character.SetCoin(character.GetCoin() + 2);
                 Destroy(gameObject);
             }
         }
