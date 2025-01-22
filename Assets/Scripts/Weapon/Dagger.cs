@@ -10,7 +10,7 @@ public class Dagger : MonoBehaviour
     [SerializeField]
     private GameObject _daggerPrefab; 
 
-    public Rogue character;
+    public Character character;
 
     private Transform player;
     public float OffSetX;
