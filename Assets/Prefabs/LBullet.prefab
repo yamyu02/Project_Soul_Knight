@@ -49,7 +49,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Sprite: {fileID: 0}
   Player: {fileID: 0}
-  MoveSpeed: 6
+  MoveSpeed: 9
   SmallBullet: {fileID: 1833242870335907965, guid: 0924e39114114b044896987225524f45, type: 3}
   SmallBulletPos: {fileID: 7507621210990255968}
 --- !u!58 &5528987880787498951

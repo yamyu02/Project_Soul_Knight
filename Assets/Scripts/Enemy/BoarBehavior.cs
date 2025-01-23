@@ -45,21 +45,7 @@ public class BoarBehavior : EnemyBase
     {
         yield return new WaitForSeconds(delay);
         base.SetRbVelocity(GetDirection() * 0);
-        Face();
-    }
-    
-    private void Face()
-    {
-        base.SetPos(transform.position);
-
-        if (base.GetPos().x > base.GetPlayer().position.x)
-        {
-            base.GetSr().flipX = true;
-        }
-        if (base.GetPos().x < base.GetPlayer().position.x)
-        {
-            base.GetSr().flipX = false;
-        }
+        base.Face();
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

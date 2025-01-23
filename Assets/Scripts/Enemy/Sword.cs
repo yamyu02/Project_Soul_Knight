@@ -58,7 +58,7 @@ public class Sword : EnemyBase
         base.SetRbVelocity(GetDirection() * 0);
     }
 
-    private void Face()
+    public override void Face()
     {
         tempPos = transform.position;
         tempPos.x = player.position.x;

@@ -80,7 +80,7 @@ public class Dagger : MonoBehaviour
 
     private void Throw()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && Time.timeScale > 0)
         {
             if (this.Type == CurrentType.CurrentType && character.GetMana() > 0)
             {

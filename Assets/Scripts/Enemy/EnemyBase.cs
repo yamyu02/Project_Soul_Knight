@@ -88,15 +88,18 @@ public class EnemyBase : MonoBehaviour
         this.sr = s;
     }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
+    public virtual void Face()
     {
-        
+        SetPos(transform.position);
+
+        if (GetPos().x > GetPlayer().position.x)
+        {
+            GetSr().flipX = true;
+        }
+        if (GetPos().x < GetPlayer().position.x)
+        {
+            GetSr().flipX = false;
+        }
     }
 }
