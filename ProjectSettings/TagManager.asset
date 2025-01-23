@@ -13,6 +13,7 @@ TagManager:
   - ManaPotion
   - Coins
   - Room1
+  - Room2
   layers:
   - Default
   - TransparentFX

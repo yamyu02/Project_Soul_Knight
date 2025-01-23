@@ -184,6 +184,11 @@ public class Character : MonoBehaviour
         {
             this.CurrentRoom = "Room1";
         }
+
+        if (other.gameObject.CompareTag("Room2"))
+        {
+            this.CurrentRoom = "Room2";
+        }
     }
 
             public void TakeDamage()
