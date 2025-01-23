@@ -66,8 +66,31 @@ public class WeaponTypeManager : MonoBehaviour
         
     }
 
-    public void WeaponPrice(int price)
+    public void ItemPrice(int price)
     {
         this.Price = price;
+    }
+
+    public void ItemShop2()
+    {
+        if (character.GetCoin() >= Price)
+        {
+            character.SetMana(character.GetMana() + 50);
+            if (character.GetMana() > 200)
+            {
+                character.SetMana(200);
+            }
+            character.SetCoin(character.GetCoin() - Price);
+        }
+    }
+
+    public void ItemShop1()
+    {
+        if (character.GetCoin() >= Price)
+        {
+            character.SetMaxHealth(character.GetMaxHealth() + 2);
+            character.SetHealth(character.GetMaxHealth());
+            character.SetCoin(character.GetCoin() - Price);
+        }
     }
 }
