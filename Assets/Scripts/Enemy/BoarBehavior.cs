@@ -1,20 +1,10 @@
-    using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class BoarBehavior : MonoBehaviour
+public class BoarBehavior : EnemyBase
 {
-    private Transform player;
-    private Vector3 direction;
-    private Vector3 Current;
-    private Vector3 BoarPos;
-    private int _health = 5;
-    [SerializeField]
-    private Rigidbody2D rb;
-    [SerializeField]
-    private SpriteRenderer sr;
-
     public Character character;
     public string SpawnRoom;
     private bool start = true;
@@ -33,9 +23,9 @@ public class BoarBehavior : MonoBehaviour
     private void Call()
     {
 
-        player = GameObject.FindWithTag("Player").transform;
-        rb = GetComponent<Rigidbody2D>();
-        sr = GetComponent<SpriteRenderer>();
+        base.SetPlayer(GameObject.FindWithTag("Player").transform);
+        base.SetRb(GetComponent<Rigidbody2D>());
+        base.SetSr(GetComponent<SpriteRenderer>());
         Face();
         StartCoroutine(GetPlayerPos(startTime));
 
@@ -44,31 +34,31 @@ public class BoarBehavior : MonoBehaviour
     private IEnumerator GetPlayerPos(float delay)
     {
         yield return new WaitForSeconds(delay);
-        direction = player.position - transform.position;
-        Current = rb.velocity;
+        base.SetDirection(base.GetPlayer().position - transform.position);
+        base.SetCurrent(GetRb().velocity);
         StartCoroutine(ChargeReset(2f));
-        rb.velocity = direction - Current;
+        base.SetRbVelocity(GetDirection() - GetCurrent());
         StartCoroutine(GetPlayerPos(3f)); 
     }
 
     private IEnumerator ChargeReset(float delay)
     {
         yield return new WaitForSeconds(delay);
-        rb.velocity = direction * 0;
+        base.SetRbVelocity(GetDirection() * 0);
         Face();
     }
     
     private void Face()
     {
-        BoarPos = transform.position;
+        base.SetPos(transform.position);
 
-        if (BoarPos.x > player.position.x)
+        if (base.GetPos().x > base.GetPlayer().position.x)
         {
-            sr.flipX = true;
+            base.GetSr().flipX = true;
         }
-        if (BoarPos.x < player.position.x)
+        if (base.GetPos().x < base.GetPlayer().position.x)
         {
-            sr.flipX = false;
+            base.GetSr().flipX = false;
         }
     }
 
@@ -76,8 +66,8 @@ public class BoarBehavior : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Weapon"))
         {
-            this._health -= 1;
-            if (this._health < 1)
+            base.SetHealth(base.GetHealth() - 1);
+            if (base.GetHealth() < 1)
             {
                 PlayerPrefs.SetInt("Kills", PlayerPrefs.GetInt("Kills", 0) + 1);
 

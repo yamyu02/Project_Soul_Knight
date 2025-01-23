@@ -2,25 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WizardBehavior : MonoBehaviour // not finished yet (most of this is still the boar code)
+public class WizardBehavior : EnemyBase // not finished yet (most of this is still the boar code)
 {
-    private Transform player;
-    private Vector3 direction;
-    private Vector3 Current;
-    private Vector3 WizardPos;
-    private int _health = 50; // i have no idea how much health this guy actually has
-    [SerializeField]
-    private Rigidbody2D rb;
-    [SerializeField]
-    private SpriteRenderer sr;
-
     public float startTime;
     void Start()
     {
 
-        player = GameObject.FindWithTag("Player").transform;
-        rb = GetComponent<Rigidbody2D>();
-        sr = GetComponent<SpriteRenderer>();
+        base.SetPlayer(GameObject.FindWithTag("Player").transform);
+        base.SetRb(GetComponent<Rigidbody2D>());
+        base.SetSr(GetComponent<SpriteRenderer>());
         Face();
         StartCoroutine(GetPlayerPos(startTime));
 
@@ -28,22 +18,22 @@ public class WizardBehavior : MonoBehaviour // not finished yet (most of this is
 
     void Update()
     {
-        if (Vector3.Distance(player.position, transform.position) > 7.2)
+        if (Vector3.Distance(base.GetPlayer().position, transform.position) > 7.2)
         {
-            rb.velocity = direction - Current;
+            base.SetRbVelocity(GetDirection() - GetCurrent());
         }
-        else if (Vector3.Distance(player.position, transform.position) < 6.8)
+        else if (Vector3.Distance(base.GetPlayer().position, transform.position) < 6.8)
         {
-            rb.velocity = -(direction - Current);
+            base.SetRbVelocity(-(GetDirection() - GetCurrent()));
         }
     }
 
     private IEnumerator GetPlayerPos(float delay)
     {
         yield return new WaitForSeconds(delay);
-        direction = player.position - transform.position;
+        base.SetDirection(GetPlayer().position - transform.position);
         //Current = rb.velocity;
-        Current = rb.velocity * 0;
+        base.SetCurrent(GetRb().velocity * 0);
         StartCoroutine(ChargeReset(2f));
         //rb.velocity = direction - Current;
         StartCoroutine(GetPlayerPos(3f)); 
@@ -58,15 +48,15 @@ public class WizardBehavior : MonoBehaviour // not finished yet (most of this is
     
     private void Face()
     {
-        WizardPos = transform.position;
+        base.SetPos(transform.position);
 
-        if (WizardPos.x > player.position.x)
+        if (base.GetPos().x > base.GetPlayer().position.x)
         {
-            sr.flipX = true;
+            base.GetSr().flipX = true;
         }
-        if (WizardPos.x < player.position.x)
+        if (base.GetPos().x < base.GetPlayer().position.x)
         {
-            sr.flipX = false;
+            base.GetSr().flipX = false;
         }
     }
 
@@ -74,8 +64,8 @@ public class WizardBehavior : MonoBehaviour // not finished yet (most of this is
     {
         if (collision.gameObject.CompareTag("Weapon"))
         {
-            this._health -= 1;
-            if (this._health < 1)
+            base.SetHealth(base.GetHealth() - 1);
+            if (base.GetHealth() < 1)
             {
                 Destroy(gameObject);
             }

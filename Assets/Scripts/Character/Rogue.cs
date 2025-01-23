@@ -28,6 +28,7 @@ public class Rogue : Character
 
         Debug.Log($"Health is {GetHealth()}");
         Debug.Log($"Armor is {GetArmor()}");
+        Debug.Log($"Difficulty: {PlayerPrefs.GetInt("Difficulty")}");
     }
     void Update()
     {

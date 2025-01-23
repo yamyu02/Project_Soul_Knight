@@ -193,13 +193,13 @@ public class Character : MonoBehaviour
             PlayerPrefs.SetInt("Damage", PlayerPrefs.GetInt("Damage", 0) + 1);
             if (this._armor > 0)
             {
-                this._armor -= 1;
+                this._armor -= 1 * (PlayerPrefs.GetInt("Difficulty") + 1); // due to time constraints i think it would be easier to just make the difficulty multiply damage taken
                 Debug.Log($"Armor is {this._armor}");
             }
 
             else
             {
-                this._health -= 1;
+                this._health -= 1 * (PlayerPrefs.GetInt("Difficulty") + 1);
                 Debug.Log($"Health is {this._health}");
                 if (this._health < 1)
                 {
@@ -208,6 +208,12 @@ public class Character : MonoBehaviour
                 }
             }
             this._iFrame = true;
+
+            if (this._armor < 0) // small check if armor is damaged to -1 or below (after damage adjustment)
+            {
+                this._health += this._armor;
+                this._armor -= this._armor;
+            }
             StartCoroutine(ResetIframe(0.5f));
         }
         else
