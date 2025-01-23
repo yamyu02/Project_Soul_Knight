@@ -6,34 +6,37 @@ using UnityEngine;
 public class WizardBullet : MonoBehaviour
 {
     public GameObject Sprite;
+    public GameObject Player;
+    private Rigidbody2D rb;
     public float MoveSpeed;
-    public float StartingXDirection;
-    public float StartingYDirection;
 
     // Start is called before the first frame update
     void Start()
     {
-        transform.Rotate(StartingXDirection, StartingYDirection, 0);
+        rb = GetComponent<Rigidbody2D>(); // so the velocity can be adjusted
+        Player = GameObject.FindGameObjectWithTag("Player"); // so that the player can be referenced in code
+
+        Vector3 direction = Player.transform.position - transform.position;
+        rb.velocity = new Vector2(direction.x, direction.y).normalized * MoveSpeed;
     }
 
     // Update is called once per frame
     void Update()
     {
-        transform.position += transform.forward * Time.deltaTime * MoveSpeed;
-        Sprite.transform.Rotate(Vector3.forward * -1);
+
     }
 
     void OnTriggerEnter2D(Collider2D coll)
     {
-        if (coll.gameObject.CompareTag("Wall"))
+        if (coll.gameObject.CompareTag("Wall") || coll.gameObject.CompareTag("Box"))
         {
-            Debug.Log("wall collide");
+            // Debug.Log("wall collide");
             Destroy(gameObject);
         }
 
         if (coll.gameObject.CompareTag("Player"))
         {
-            Debug.Log("Player collide");
+            // Debug.Log("Player collide");
             Destroy(gameObject);
         }
     }

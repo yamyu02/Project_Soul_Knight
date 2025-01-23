@@ -39,12 +39,11 @@ public class PauseScript : MonoBehaviour
                 Debug.Log("game unpaused");
             }
         }
-        if (character.GetHealth() == 0)
+        if (character.GetHealth() <= 0)
         {
             Time.timeScale = 0;
             GameOverMenu.SetActive(true);
             _gameEnded = true;
-            Debug.Log("game over");
             character.SetHealth(-1); // code to prevent the code from looping
         }
     }

@@ -4,7 +4,11 @@ using UnityEngine;
 
 public class WizardBehavior : EnemyBase // not finished yet (most of this is still the boar code)
 {
+    public GameObject Bullet;
+    public Transform BulletPos;
     public float startTime;
+    public float ShootDelay = 0;
+    private float _shootTimer;
     void Start()
     {
 
@@ -18,6 +22,7 @@ public class WizardBehavior : EnemyBase // not finished yet (most of this is sti
 
     void Update()
     {
+        _shootTimer += Time.deltaTime;
         if (Vector3.Distance(base.GetPlayer().position, transform.position) > 7.2)
         {
             base.SetRbVelocity(GetDirection() - GetCurrent());
@@ -25,6 +30,11 @@ public class WizardBehavior : EnemyBase // not finished yet (most of this is sti
         else if (Vector3.Distance(base.GetPlayer().position, transform.position) < 6.8)
         {
             base.SetRbVelocity(-(GetDirection() - GetCurrent()));
+        }
+        if (_shootTimer > ShootDelay)
+        {
+            _shootTimer = 0;
+            Instantiate(Bullet, BulletPos.position, Quaternion.identity);
         }
     }
 
