@@ -10,6 +10,7 @@ public class Rogue : Character
     public Animator Ani;
 
     private int _charge;
+    public AudioSource skillAudio;
 
     public Rogue()
     {
@@ -53,6 +54,7 @@ public class Rogue : Character
         {
             if (this._charge > 0)
             {
+                skillAudio.Play();
                 SetiFrame(true);
                 Debug.Log("Rolling");
                 SetMoveForce(15);

@@ -25,6 +25,9 @@ public class Character : MonoBehaviour
 
     private SpriteRenderer sr;
 
+    public AudioSource potionAudio;
+    public AudioSource hurtAudio;
+    public AudioSource coinAudio;
 
     public Character()
     {
@@ -147,12 +150,14 @@ public class Character : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Attack"))
         {
+            hurtAudio.Play();
             Debug.Log("Took hit");
             TakeDamage();
             CheckArmor();
         }
         if (other.gameObject.CompareTag("HealthPotion"))
         {
+            potionAudio.Play();
             this._health += 2;
             if (this._health > this._maxHealth)
             {
@@ -164,6 +169,7 @@ public class Character : MonoBehaviour
 
         if (other.gameObject.CompareTag("ManaPotion"))
         {
+            potionAudio.Play();
             this._mana += 10;
             if (this._mana > 200)
             {
@@ -175,6 +181,7 @@ public class Character : MonoBehaviour
 
         if (other.gameObject.CompareTag("Coins"))
         {
+            coinAudio.Play();
             this._coins += 2;
 
             Debug.Log($"Coins: {_coins}");

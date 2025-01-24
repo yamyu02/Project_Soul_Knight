@@ -17,6 +17,7 @@ public class WizardBehavior : EnemyBase // not finished yet (most of this is sti
     public float Speed;
 
     public GameObject WinMenu;
+    public AudioSource WinAudio;
 
     void Start()
     {
@@ -91,6 +92,7 @@ public class WizardBehavior : EnemyBase // not finished yet (most of this is sti
             base.SetHealth(base.GetHealth() - 1);
             if (base.GetHealth() < 1)
             {
+                WinAudio.Play();
                 WinMenu.SetActive(true); // you can still use p to unpause here but i don't really care about that
                 Time.timeScale = 0;
                 PlayerPrefs.SetInt("Wins", PlayerPrefs.GetInt("Wins", 0) + 1);
